@@ -1,0 +1,11 @@
+body {
+  margin: 0;
+  font-family: 'Muli', sans-serif;
+  background: #8f57fd;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+/*# sourceMappingURL=App.css.map */
