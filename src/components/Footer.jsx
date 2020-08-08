@@ -1,11 +1,15 @@
 import React from 'react';
 import '../assets/styles/components/Footer.scss'
 
+const footerUse = "Terminos de uso";
+const footerPrivacity = "Declaración de privacidad";
+const footerHelp = "Centro de ayuda";
+
 const Footer = () => (
     <footer className="footer">
-        <a href="/">Terminos de uso</a>
-        <a href="/">Declaración de privacidad</a>
-        <a href="/">Centro de ayuda</a>
+        <a href="/">{footerUse}</a>
+        <a href="/">{footerPrivacity}</a>
+        <a href="/">{footerHelp}</a>
     </footer>
 );
 
