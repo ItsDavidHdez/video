@@ -1,30 +1,42 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
-import { setFavorite } from '../actions/index';
+import { setFavorite, deleteFavorite } from '../actions/index';
 import '../assets/styles/components/CarouselItem.scss';
 import play from '../assets/static/play-icon.png';
 import plus from '../assets/static/plus-icon.png';
-
+import remove from '../assets/static/remove-icon.png';
 
 const CarouselItem = (props) => {
-  const { cover, title, year, contentRating, duration } = props;
+  const { id, cover, title, year, contentRating, duration } = props;
   const handleSetFavorite = () => {
     props.setFavorite(
       {
-        cover, title, year, contentRating, duration
+        id, cover, title, year, contentRating, duration
       })
+  }
+
+  const handleDeleteFavorite = (itemId) => {
+    props.deleteFavorite(itemId)
   }
   return(
     <div className="carousel-item">
         <img className="carousel-item__img" src={cover} alt={title}  />
         <div className="carousel-item__details">
           <div>
-            <img className="carousel-item__details--img" src={play} alt="Play Icon"/> 
             <img className="carousel-item__details--img" 
-            src={plus} 
-            alt="Plus Icon"
-            onClick={handleSetFavorite}
+              src={play} 
+              alt="Play Icon"  
+            /> 
+            <img className="carousel-item__details--img" 
+              src={plus} 
+              alt="Plus Icon"
+              onClick={handleSetFavorite}
+            /> 
+            <img className="carousel-item__details--img" 
+              src={remove} 
+              alt="Plus Icon"
+              onClick={() => handleDeleteFavorite(id)}
             /> 
           </div>
           <p className="carousel-item__details--title">{title}</p>
@@ -47,7 +59,8 @@ CarouselItem.propTypes = {
 }
 
 const mapDispatchToProps = {
-  setFavorite, 
+  setFavorite,
+  deleteFavorite,
 }
 
 export default connect(null, mapDispatchToProps)(CarouselItem);
